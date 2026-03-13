@@ -1,39 +1,103 @@
 # OpenCode OmniRoute Integration Skill
 
-一个用于配置 OpenCode 使用 OmniRoute AI 网关服务的技能。
+[English](./README.md) | [中文](./README_ZH.md)
 
-## 功能特性
+A skill that automatically configures OpenCode to work with the OmniRoute AI gateway service, providing seamless access to multiple AI models from various providers.
 
-- 自动配置 OpenCode 以使用 OmniRoute 作为 AI 提供商
-- 支持 OmniRoute 上的所有可用模型（Qwen、Codex、GitHub、Kiro 等）
-- 自动更新认证凭据
-- 包含配置验证功能
+## ✨ Features
 
-## 支持的模型
+- 🚀 **One-click Configuration** - Automatically configure OpenCode to use OmniRoute as an AI provider
+- 🌐 **Multi-Provider Support** - Access models from Qwen, Codex, GitHub, Kiro, and more
+- 🔐 **Secure Authentication** - Automatically manages API credentials
+- ✅ **Configuration Verification** - Built-in testing to ensure everything works
+- 📦 **100+ Models** - Pre-configured access to all OmniRoute available models
 
-该技能配置了 OmniRoute 服务上提供的所有模型，包括：
+## �_models Supported
 
-- **Qwen 模型**: `qw/qwen3-coder-plus`, `qw/qwen3-coder-flash`, 等
-- **Codex 模型**: `cx/gpt-5.2-codex`, `cx/gpt-5.3-codex`, 等
-- **GitHub 模型**: `gh/gpt-4o`, `gh/gpt-5`, 等
-- **Kiro 模型**: `kr/claude-sonnet-4.5`, `kr/claude-haiku-4.5`, 等
+### Qwen Models
+- `qw/qwen3-coder-plus` - Advanced coding model
+- `qw/qwen3-coder-flash` - Fast coding model
+- `qw/vision-model` - Vision capabilities
+- `qw/coder-model` - General coding model
 
-## 安装方法
+### Codex Models
+- `cx/gpt-5.3-codex` - Latest Codex model
+- `cx/gpt-5.2-codex` - Advanced Codex
+- `cx/gpt-5.1-codex-mini` - Lightweight Codex
 
-1. 将此仓库克隆到本地
-2. 将文件夹复制到 OpenCode 技能目录
+### GitHub Models
+- `gh/gpt-4o` - GPT-4 Optimized
+- `gh/gpt-5` - Latest GPT-5
+- `gh/claude-sonnet-4.5` - Claude Sonnet
+- `gh/gemini-2.5-pro` - Google Gemini Pro
 
-## 使用方法
+### Kiro Models
+- `kr/claude-sonnet-4.5` - Kiro hosted Claude
+- `kr/claude-haiku-4.5` - Kiro hosted Claude Haiku
 
-1. 运行 `opencode skill run omniroute-integration`
-2. 输入您的 OmniRoute API 密钥
-3. 根据提示输入服务端点（可选）
-4. 技能将自动配置 OpenCode
+## 📋 Requirements
 
-## 支持
+- OpenCode version 1.2.0 or higher
+- OmniRoute API key
+- Network access to OmniRoute service
 
-如果遇到问题，请提交 issue 或查看文档。
+## ⚡️ Quick Start
 
-## 许可证
+### Installation
 
-MIT
+Using npm skills:
+
+```bash
+npx skills add nianyi778/opencode-omniroute-integration --skill omniroute-integration
+```
+
+Or clone manually:
+
+```bash
+git clone https://github.com/nianyi778/opencode-omniroute-integration.git
+cd opencode-omniroute-integration
+sh install.sh
+```
+
+### Usage
+
+1. Run the skill and follow the prompts
+2. Enter your OmniRoute API key
+3. Confirm the service endpoint (default: http://138.2.29.190:20128)
+4. Start using your AI models!
+
+### Example Commands
+
+```bash
+# Use Kiro Claude model
+opencode -m omniroute/kr/claude-sonnet-4.5
+
+# Use Qwen Coder model
+opencode -m omniroute/qw/qwen3-coder-plus
+
+# Use Codex model
+opencode -m omniroute/cx/gpt-5.2-codex
+
+# Use GitHub GPT-4o
+opencode -m omniroute/gh/gpt-4o
+```
+
+## 📖 Documentation
+
+For detailed usage instructions, see [Example Usage](./example_usage.md)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+MIT License - see the [LICENSE](./LICENSE) file for details.
+
+## ⭐️ Show Your Support
+
+If this project helps you, please give it a star on GitHub!
+
+---
+
+Made with ❤️ by OpenCode Community

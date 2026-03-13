@@ -1,0 +1,14 @@
+# Environment variables
+.env
+
+# Logs
+*.log
+.opencode/log/
+
+# Temporary files
+tmp/
+temp/
+
+# System files
+.DS_Store
+Thumbs.db

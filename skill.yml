@@ -1,0 +1,203 @@
+name: omniroute-integration
+title: OmniRoute Integration
+description: Configure OpenCode to work with OmniRoute AI gateway service
+author: OpenCode Community
+version: 1.0.0
+category: integration
+tags:
+  - ai-gateway
+  - omniroute
+  - provider
+  - configuration
+
+instructions:
+  - "Set up OpenCode to use OmniRoute as a custom provider"
+  - "Configure all available models from OmniRoute service"
+  - "Update authentication credentials"
+
+requirements:
+  - "OpenCode version >= 1.2.0"
+  - "Access to OmniRoute service"
+  - "Valid API key for OmniRoute"
+
+steps:
+  - name: "Get OmniRoute API Key"
+    description: "Obtain the API key for OmniRoute service"
+    type: input
+    prompt: "请输入您的 OmniRoute API 密钥:"
+    variable: omniroute_api_key
+
+  - name: "Get OmniRoute Endpoint"
+    description: "Get the OmniRoute service endpoint"
+    type: input
+    prompt: "请输入 OmniRoute 服务端点 (默认: http://138.2.29.190:20128):"
+    variable: omniroute_endpoint
+    default: "http://138.2.29.190:20128"
+
+  - name: "Configure OpenCode"
+    description: "Configure OpenCode to use OmniRoute as provider"
+    type: script
+    script: |
+      #!/bin/bash
+      set -e
+      
+      API_KEY="${omniroute_api_key}"
+      ENDPOINT="${omniroute_endpoint}"
+      
+      # Create config directory if it doesn't exist
+      mkdir -p ~/.config/opencode/
+      mkdir -p ~/.local/share/opencode/
+      
+      # Backup existing config if it exists
+      if [ -f ~/.config/opencode/opencode.json ]; then
+        cp ~/.config/opencode/opencode.json ~/.config/opencode/opencode.json.backup
+        echo "备份现有配置到 ~/.config/opencode/opencode.json.backup"
+      fi
+      
+      # Create/update OpenCode config file
+      cat > ~/.config/opencode/opencode.json << EOF
+      {
+        "\$schema": "https://opencode.ai/config.json",
+        "disabled_providers": ["openai"],
+        "provider": {
+          "omniroute": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "OmniRoute",
+            "options": {
+              "baseURL": "${ENDPOINT}/v1",
+              "apiKey": "${API_KEY}"
+            },
+            "models": {
+              "qw/qwen3-coder-plus": {},
+              "qw/qwen3-coder-flash": {},
+              "qw/vision-model": {},
+              "qw/coder-model": {},
+              "qwen/qwen3-coder-plus": {},
+              "qwen/qwen3-coder-flash": {},
+              "qwen/vision-model": {},
+              "qwen/coder-model": {},
+              "qwen/qwen3-asr": {},
+              "qwen/qwen3-tts": {},
+              "cx/gpt-5.3-codex": {},
+              "codex/gpt-5.3-codex": {},
+              "cx/gpt-5.3-codex-xhigh": {},
+              "codex/gpt-5.3-codex-xhigh": {},
+              "cx/gpt-5.3-codex-high": {},
+              "codex/gpt-5.3-codex-high": {},
+              "cx/gpt-5.3-codex-low": {},
+              "codex/gpt-5.3-codex-low": {},
+              "cx/gpt-5.3-codex-none": {},
+              "codex/gpt-5.3-codex-none": {},
+              "cx/gpt-5.1-codex-mini": {},
+              "codex/gpt-5.1-codex-mini": {},
+              "cx/gpt-5.1-codex-mini-high": {},
+              "codex/gpt-5.1-codex-mini-high": {},
+              "cx/gpt-5.2-codex": {},
+              "codex/gpt-5.2-codex": {},
+              "cx/gpt-5.2": {},
+              "codex/gpt-5.2": {},
+              "cx/gpt-5.1-codex-max": {},
+              "codex/gpt-5.1-codex-max": {},
+              "cx/gpt-5.1-codex": {},
+              "codex/gpt-5.1-codex": {},
+              "cx/gpt-5.1": {},
+              "codex/gpt-5.1": {},
+              "cx/gpt-5-codex": {},
+              "codex/gpt-5-codex": {},
+              "cx/gpt-5-codex-mini": {},
+              "codex/gpt-5-codex-mini": {},
+              "gh/gpt-4.1": {},
+              "github/gpt-4.1": {},
+              "gh/gpt-4o": {},
+              "github/gpt-4o": {},
+              "gh/gpt-4o-mini": {},
+              "github/gpt-4o-mini": {},
+              "gh/gpt-4": {},
+              "github/gpt-4": {},
+              "gh/gpt-3.5-turbo": {},
+              "github/gpt-3.5-turbo": {},
+              "gh/gpt-5": {},
+              "github/gpt-5": {},
+              "gh/gpt-5-mini": {},
+              "github/gpt-5-mini": {},
+              "gh/gpt-5-codex": {},
+              "github/gpt-5-codex": {},
+              "gh/gpt-5.1": {},
+              "github/gpt-5.1": {},
+              "gh/gpt-5.1-codex": {},
+              "github/gpt-5.1-codex": {},
+              "gh/gpt-5.1-codex-mini": {},
+              "github/gpt-5.1-codex-mini": {},
+              "gh/gpt-5.1-codex-max": {},
+              "github/gpt-5.1-codex-max": {},
+              "gh/gpt-5.2": {},
+              "github/gpt-5.2": {},
+              "gh/gpt-5.2-codex": {},
+              "github/gpt-5.2-codex": {},
+              "gh/claude-haiku-4.5": {},
+              "github/claude-haiku-4.5": {},
+              "gh/claude-opus-4.1": {},
+              "github/claude-opus-4.1": {},
+              "gh/claude-opus-4.6": {},
+              "github/claude-opus-4.6": {},
+              "gh/claude-opus-4-5-20251101": {},
+              "github/claude-opus-4-5-20251101": {},
+              "gh/claude-sonnet-4": {},
+              "github/claude-sonnet-4": {},
+              "gh/claude-sonnet-4.5": {},
+              "github/claude-sonnet-4.5": {},
+              "gh/gemini-2.5-pro": {},
+              "github/gemini-2.5-pro": {},
+              "gh/gemini-3-flash-preview": {},
+              "github/gemini-3-flash-preview": {},
+              "gh/gemini-3-pro-preview": {},
+              "github/gemini-3-pro-preview": {},
+              "gh/grok-code-fast-1": {},
+              "github/grok-code-fast-1": {},
+              "gh/oswe-vscode-prime": {},
+              "github/oswe-vscode-prime": {},
+              "kr/claude-sonnet-4.5": {},
+              "kiro/claude-sonnet-4.5": {},
+              "kr/claude-haiku-4.5": {},
+              "kiro/claude-haiku-4.5": {},
+              "comfyui/animatediff": {},
+              "comfyui/svd-xt": {},
+              "sdwebui/animatediff-webui": {},
+              "comfyui/stable-audio-open": {},
+              "comfyui/musicgen-medium": {}
+            }
+          }
+        },
+        "model": "omniroute/qw/qwen3-coder-plus"
+      }
+      EOF
+      
+      # Create/update auth file
+      cat > ~/.local/share/opencode/auth.json << EOF
+      {
+        "omniroute": {
+          "apiKey": "${API_KEY}"
+        }
+      }
+      EOF
+      
+      echo "✅ OpenCode 配置已更新，使用 OmniRoute 作为提供者"
+      echo "💡 现在您可以使用以下模型，例如:"
+      echo "   opencode -m omniroute/kr/claude-sonnet-4.5"
+      echo "   opencode -m omniroute/qw/qwen3-coder-plus"
+      echo "   opencode -m omniroute/cx/gpt-5.2-codex"
+      echo "   opencode -m omniroute/gh/gpt-4o"
+      
+  - name: "Verify Configuration"
+    description: "Test if the configuration works correctly"
+    type: confirm
+    message: "配置已完成，是否要测试一个模型以验证配置是否正确？"
+
+  - name: "Test Model"
+    description: "Run a quick test with one of the OmniRoute models"
+    type: script
+    condition: "verify_configuration == true"
+    script: |
+      #!/bin/bash
+      echo "正在测试 omniroute/kr/claude-sonnet-4.5 模型..."
+      opencode run -m omniroute/kr/claude-sonnet-4.5 "这是一个配置测试，如果收到此消息说明配置成功。请回复确认收到。" || echo "⚠️ 模型测试失败，请检查配置或网络连接"

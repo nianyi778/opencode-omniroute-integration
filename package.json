@@ -1,0 +1,27 @@
+{
+  "name": "opencode-omniroute-integration",
+  "version": "1.0.0",
+  "description": "OpenCode skill for integrating with OmniRoute AI gateway service",
+  "main": "skill.yml",
+  "scripts": {
+    "install": "sh install.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "opencode",
+    "omniroute",
+    "ai-gateway",
+    "ai-provider",
+    "integration"
+  ],
+  "author": "OpenCode Community",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/[your-username]/opencode-omniroute-integration.git"
+  },
+  "bugs": {
+    "url": "https://github.com/[your-username]/opencode-omniroute-integration/issues"
+  },
+  "homepage": "https://github.com/[your-username]/opencode-omniroute-integration#readme"
+}

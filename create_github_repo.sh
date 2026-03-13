@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# OpenCode OmniRoute Integration - GitHub 发布助手
+# 由于权限限制，此脚本提供分步指令，需手动执行
+
+echo "==========================================="
+echo "OpenCode OmniRoute Integration 技能发布助手"
+echo "==========================================="
+echo ""
+echo "此脚本将指导您如何发布此技能到 GitHub。"
+echo "注意：由于安全原因，此操作需要您手动完成。"
+echo ""
+
+echo "步骤 1: 准备本地环境"
+echo "----------------------"
+echo "1. 在您的本地计算机上运行以下命令下载项目文件："
+echo "   scp root@[YOUR_SERVER_IP]:/root/opencode-omniroute-integration.tar.gz ./"
+echo ""
+echo "2. 解压缩文件："
+echo "   tar -xzf opencode-omniroute-integration.tar.gz"
+echo ""
+
+echo "步骤 2: 在 GitHub 上创建仓库"
+echo "----------------------------"
+echo "1. 访问 https://github.com/new"
+echo "2. 创建新仓库，名称设为 'opencode-omniroute-integration'"
+echo "3. 不要勾选 'Initialize this repository with a README'"
+echo "4. 点击 'Create repository'"
+echo ""
+
+echo "步骤 3: 上传代码"
+echo "------------------"
+echo "1. 复制仓库的 SSH 或 HTTPS 地址"
+echo "2. 在本地运行："
+echo "   git clone [REPOSITORY_URL]"
+echo "   cd opencode-omniroute-integration"
+echo "   # 将之前下载并解压的文件复制到仓库目录"
+echo "   cp -r ../opencode-omniroute-integration/* ."
+echo "   git add ."
+echo "   git commit -m \"Initial commit: OpenCode OmniRoute integration skill\""
+echo "   git push origin main"
+echo ""
+
+echo "步骤 4: 验证发布"
+echo "------------------"
+echo "1. 检查 GitHub 仓库是否包含了所有文件："
+echo "   - skill.yml"
+echo "   - README.md"
+echo "   - package.json"
+echo "   - install.sh"
+echo "   - example_usage.md"
+echo "   - LICENSE"
+echo "   - .gitignore"
+echo ""
+
+echo "完成后，您的技能就可以通过 GitHub 被其他人发现和使用了！"
